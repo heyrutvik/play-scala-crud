@@ -1,4 +1,12 @@
-This is your new Play application
-=================================
+play-scala-crud is simple CRUD application. Project is intended to learn 
+basics of play framework using Scala language.
 
-This file will be packaged with your application, when using `activator dist`.
+To run:
+	1> pull repo
+	2> change directory to play-scala-crud
+	3> ./activator run
+	4> open http://127.0.0.1:9000/ in browser
+	5> click on 'Apply this script now!'
+
+explore the code. it's simple and useful to grasp the structure of play framework.
+HAVE FUN!

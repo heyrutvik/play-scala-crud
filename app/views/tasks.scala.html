@@ -4,6 +4,7 @@
 @main("TASKS") {
 
     @if(isEmpty) {
+        <h1>Play Scala CRUD</h1>
         @form(routes.Task.create) {
             @inputText(f("label"), '_label -> "label")
             @inputText(f("desc"), '_label -> "desc")
@@ -19,7 +20,7 @@
         }
     }
 
-    <h1>@tasks.size task(s)</h1>
+    <h3>@tasks.size task(s)</h3>
     
     <ul>
         @tasks.map { task =>

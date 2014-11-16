@@ -2,7 +2,7 @@
  
 # --- !Ups
 
-CREATE TABLE curd (
+CREATE TABLE crud (
     `id` INT PRIMARY KEY AUTO_INCREMENT,
     `label` VARCHAR(255),
     `desc` TEXT
@@ -10,4 +10,4 @@ CREATE TABLE curd (
  
 # --- !Downs
  
-DROP TABLE curd;
+DROP TABLE crud;

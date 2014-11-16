@@ -19,23 +19,23 @@ object Task {
     }
 
     def fetchAll: List[Task] = DB.withConnection { implicit c => 
-        SQL("select * from curd order by `id` desc").as(task *)
+        SQL("select * from crud order by `id` desc").as(task *)
     }
 
     def fetchById(id: Long) = DB.withConnection { implicit c =>
-        SQL("select * from curd where `id` = {id}")
+        SQL("select * from crud where `id` = {id}")
             .on("id"->id)
             .as(task.single)
     }
 
     def create(task: Task) = DB.withConnection { implicit c =>
-        SQL("insert into curd (`label`, `desc`) values ({label}, {desc})")
+        SQL("insert into crud (`label`, `desc`) values ({label}, {desc})")
             .on("label"->task.label, "desc"->task.desc)
             .executeUpdate()
     }
 
     def update(task: Task) = DB.withConnection { implicit c =>
-        SQL("update curd " + 
+        SQL("update crud " + 
             "set `label` = {label}, `desc` = {desc} " + 
             "where `id` = {id}")
                 .on("id"->task.id, "label"->task.label, "desc"->task.desc)
@@ -43,7 +43,7 @@ object Task {
     }
 
     def delete(id: Long) = DB.withConnection { implicit c =>
-        SQL("delete from curd where `id` = {id}")
+        SQL("delete from crud where `id` = {id}")
             .on("id"->id)
             .executeUpdate()
     }

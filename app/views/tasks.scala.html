@@ -1,0 +1,40 @@
+@(tasks: List[Task], f: Form[Task], isEmpty: Boolean)
+@import helper._
+
+@main("TASKS") {
+
+    @if(isEmpty) {
+        @form(routes.Task.create) {
+            @inputText(f("label"), '_label -> "label")
+            @inputText(f("desc"), '_label -> "desc")
+            <input type="hidden" name="id" value="@{f("id").value.map(x=>x).getOrElse("0")}">
+            <input type="submit" value="Create" />
+        }
+    } else { 
+        @form(routes.Task.update(0)) {
+            @inputText(f("label"), '_label -> "label")
+            @inputText(f("desc"), '_label -> "desc")
+            <input type="hidden" name="id" value="@{f("id").value.map(x=>x).getOrElse("0")}">
+            <input type="submit" value="Update" />
+        }
+    }
+
+    <h1>@tasks.size task(s)</h1>
+    
+    <ul>
+        @tasks.map { task =>
+            <li>
+                <a href="@routes.Task.read(task.id)">@task.label</a>
+
+                @form(routes.Task.edit(task.id)) {
+                    <input type="submit" value="Edit">
+                }
+               
+                @form(routes.Task.delete(task.id)) {
+                    <input type="submit" value="Delete">
+                }
+            </li>
+        }
+    </ul>
+
+}

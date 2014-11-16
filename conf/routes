@@ -5,5 +5,19 @@
 # Home page
 GET     /                           controllers.Application.index
 
+# CURD
+# list
+GET     /tasks                      controllers.Task.tasks
+# create
+POST    /tasks                      controllers.Task.create
+# read
+GET     /task/:id/read              controllers.Task.read(id: Long)
+# edit form
+GET     /task/:id/edit              controllers.Task.edit(id: Long)
+# update
+POST    /task/:id/edit              controllers.Task.update(id: Long)
+# delete
+POST    /task/:id/delete            controllers.Task.delete(id: Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
